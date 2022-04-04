@@ -11,6 +11,7 @@
         <item name="backgroundColor">@color/blue_600</item>
         <item name="content_background">@color/blue_200</item>
         <item name="category_background">@color/black_500</item>
+        <item name="tab_color">@drawable/tab_color</item>
 
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/green_200</item>
