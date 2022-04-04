@@ -36,7 +36,7 @@ public class AboutFragment extends Fragment {
                 .addEmail("contact@golbarg.net")
                 .addFacebook("golbargnet")
                 .addYoutube("UCooKZ969-pMyYN0WAbOUaAg")
-                .addPlayStore("net.golbarg.skillassessment")
+                .addPlayStore("net.golbarg.engtoper")
                 .addWebsite("golbarg.net")
                 .addItem(getCopyRightsElement())
                 .addItem(new Element().setTitle(context.getString(R.string.version)).setIconDrawable(R.drawable.ic_info))

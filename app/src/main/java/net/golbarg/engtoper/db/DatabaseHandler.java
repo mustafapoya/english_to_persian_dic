@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
-    private static final String DATABASE_NAME ="skill_assessment_db";
+    private static final String DATABASE_NAME ="dictionary_db";
 
     public DatabaseHandler(Context context) {
         //3rd argument to be passed is CursorFactory instance
