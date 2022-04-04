@@ -1,2 +1,2 @@
-rootProject.name = "Skill Assessment"
+rootProject.name = "English to Persian"
 include ':app'

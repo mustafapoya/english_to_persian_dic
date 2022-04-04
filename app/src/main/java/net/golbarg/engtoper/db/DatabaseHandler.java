@@ -16,11 +16,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(TableConfig.createTableQuery());
-        db.execSQL(TableCategory.createTableQuery());
-        db.execSQL(TableQuestion.createTableQuery());
-        db.execSQL(TableQuestionAnswer.createTableQuery());
         db.execSQL(TableBookmark.createTableQuery());
-        db.execSQL(TableQuestionResult.createTableQuery());
 
     }
 
@@ -28,11 +24,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Drop older table if existed
         db.execSQL(TableConfig.dropTableQuery());
-        db.execSQL(TableCategory.dropTableQuery());
-        db.execSQL(TableQuestion.dropTableQuery());
-        db.execSQL(TableQuestionAnswer.dropTableQuery());
         db.execSQL(TableBookmark.dropTableQuery());
-        db.execSQL(TableQuestionResult.dropTableQuery());
         // Create tables again
         onCreate(db);
     }

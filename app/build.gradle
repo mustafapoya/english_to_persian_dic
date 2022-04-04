@@ -7,7 +7,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "net.golbarg.skillassessment"
+        applicationId "net.golbarg.engtoper"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1

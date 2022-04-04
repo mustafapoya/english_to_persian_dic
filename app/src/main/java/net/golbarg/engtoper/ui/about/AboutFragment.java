@@ -29,7 +29,6 @@ public class AboutFragment extends Fragment {
 
         linearLayoutAbout = root.findViewById(R.id.linear_layout_about);
 
-
         View aboutPage = new AboutPage(context)
                 .isRTL(false)
                 .setDescription("you can feel free to contact us and help us to improve with your suggestions")

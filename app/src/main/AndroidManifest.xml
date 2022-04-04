@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:largeHeap="true"
         android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.SkillAssessment">
+        android:theme="@style/Theme.EnglishToPersian">
 
         <!-- Real AdMob app ID: ca-app-pub-1361000594268534~1108605916 -->
         <!-- Test AdMob app ID: ca-app-pub-3940256099942544~3347511713 -->
@@ -31,22 +31,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="net.golbarg.engtoper.ui.intro.IntroActivity"
-            android:label="@string/app_name">
-        </activity>
+
         <activity
             android:name="net.golbarg.engtoper.MainActivity"
             android:label="@string/app_name">
 
         </activity>
-        <activity
-            android:name="net.golbarg.engtoper.ui.question.QuestionActivity"
-            android:label="@string/app_name">
-        </activity>
-        <activity
-            android:name="net.golbarg.engtoper.ui.question.QuestionResultActivity"
-            android:label="@string/app_name">
-        </activity>
-    </application>
 
+    </application>
 </manifest>

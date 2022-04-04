@@ -18,12 +18,6 @@
         tools:layout="@layout/fragment_bookmark" />
 
     <fragment
-        android:id="@+id/navigation_profile"
-        android:name="net.golbarg.engtoper.ui.profile.ProfileFragment"
-        android:label="@string/title_profile"
-        tools:layout="@layout/fragment_profile" />
-
-    <fragment
         android:id="@+id/navigation_about"
         android:name="net.golbarg.engtoper.ui.about.AboutFragment"
         android:label="@string/title_about"
