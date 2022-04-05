@@ -11,4 +11,5 @@
     <string name="version">version: 1.0</string>
     <string name="no_internet_connection_try_again">No Internet Connection Try Again!</string>
     <string name="try_again">Try Again</string>
+    <string name="word">Word</string>
 </resources>
