@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import net.golbarg.engtoper.models.PhraseEnglish;
+import net.golbarg.engtoper.models.PhrasePersian;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class TablePhrasePersian {
         offlineDatabaseHandler.openDatabase();
     }
 
-    public PhraseEnglish get(int id) {
+    public PhrasePersian get(int id) {
         SQLiteDatabase db = offlineDatabaseHandler.getReadableDatabase();
 
         Cursor cursor = db.query(TABLE_NAME, ALL_COLUMNS, KEY_ID + "=?", new String[]{String.valueOf(id)}, null, null, null, null);
@@ -38,9 +39,9 @@ public class TablePhrasePersian {
         }
     }
 
-    public ArrayList<PhraseEnglish> getAll() {
-        ArrayList<PhraseEnglish> result = new ArrayList<>();
-        String selectQuery = "SELECT  * FROM " + TABLE_NAME;
+    public ArrayList<PhrasePersian> getAll() {
+        ArrayList<PhrasePersian> result = new ArrayList<>();
+        String selectQuery = "SELECT  * FROM " + TABLE_NAME + " WHERE " + KEY_LANGUAGE_FROM + " NOT LIKE '%@%'";
 
         SQLiteDatabase db = offlineDatabaseHandler.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -54,7 +55,7 @@ public class TablePhrasePersian {
     }
 
 
-    public PhraseEnglish mapColumn(Cursor cursor) {
+    public PhrasePersian mapColumn(Cursor cursor) {
         String language_to = "";
         try {
             language_to = new String(cursor.getBlob(cursor.getColumnIndex(KEY_LANGUAGE_TO)), "UTF-8");
@@ -62,7 +63,7 @@ public class TablePhrasePersian {
             e.printStackTrace();
         }
 
-        return new PhraseEnglish(
+        return new PhrasePersian(
                 cursor.getInt(cursor.getColumnIndex(KEY_ID)),
                 cursor.getString(cursor.getColumnIndex(KEY_LANGUAGE_FROM)),
                 language_to,
