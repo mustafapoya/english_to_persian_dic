@@ -48,11 +48,16 @@ public class TablePhraseEnglish {
         if(cursor.moveToFirst()) {
             do {
                 result.add(mapColumn(cursor));
-            }while(cursor.moveToNext());
+            } while(cursor.moveToNext());
         }
         return result;
     }
 
+    public void updateFavorite(PhraseEnglish phrase) {
+        String query = "update " + TABLE_NAME + " SET " + KEY_FAVORITE + " = " + phrase.getFavorite() + " WHERE id = " + phrase.getId();
+        SQLiteDatabase db = offlineDatabaseHandler.getReadableDatabase();
+        db.execSQL(query);
+    }
 
     public PhraseEnglish mapColumn(Cursor cursor) {
         String language_to = "";

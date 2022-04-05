@@ -54,6 +54,11 @@ public class TablePhrasePersian {
         return result;
     }
 
+    public void updateFavorite(PhrasePersian phrase) {
+        String query = "update " + TABLE_NAME + " SET " + KEY_FAVORITE + " = " + phrase.getFavorite() + " WHERE id = " + phrase.getId();
+        SQLiteDatabase db = offlineDatabaseHandler.getReadableDatabase();
+        db.execSQL(query);
+    }
 
     public PhrasePersian mapColumn(Cursor cursor) {
         String language_to = "";
