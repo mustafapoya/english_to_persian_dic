@@ -1,6 +1,7 @@
 package net.golbarg.engtoper.ui.home;
 
 import android.app.Activity;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,8 +37,11 @@ public class PhraseEnglishListAdapter  extends ArrayAdapter<PhraseEnglish> {
         LayoutInflater inflater = context.getLayoutInflater();
         View rowView = inflater.inflate(R.layout.custom_list_phrase_english, null, true);
 
-        TextView txtNumber = rowView.findViewById(R.id.txt_word);
-        txtNumber.setText(String.valueOf(phraseEnglishArrayList.get(position).getFromLanguage()));
+        TextView txtWord = rowView.findViewById(R.id.txt_word);
+        txtWord.setText(String.valueOf(phraseEnglishArrayList.get(position).getFromLanguage()));
+
+        TextView txtTranslate = rowView.findViewById(R.id.txt_translate);
+        txtTranslate.setText(Html.fromHtml(phraseEnglishArrayList.get(position).getToLanguage().replace("');", "")));
 
         return rowView;
     }
