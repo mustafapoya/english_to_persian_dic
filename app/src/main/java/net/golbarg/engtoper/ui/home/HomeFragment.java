@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -30,6 +31,7 @@ public class HomeFragment extends Fragment {
     Context context;
     ProgressBar progressLoading;
     AdView mAdViewHomeScreenBanner;
+    SearchView searchView;
     private ListView listViewPhrase;
     PhraseEnglishListAdapter phraseEnglishListAdapter;
     ArrayList<PhraseEnglish> phraseEnglishArrayList = new ArrayList<>();
@@ -45,8 +47,21 @@ public class HomeFragment extends Fragment {
 
         progressLoading = root.findViewById(R.id.progress_loading);
         progressLoading.setVisibility(View.GONE);
+        searchView = root.findViewById(R.id.search_view_phrase);
         listViewPhrase = root.findViewById(R.id.list_view_phrase);
 
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                phraseEnglishListAdapter.getFilter().filter(newText);
+                return true;
+            }
+        });
 
         phraseEnglishListAdapter = new PhraseEnglishListAdapter(getActivity(), phraseEnglishArrayList);
         listViewPhrase.setAdapter(phraseEnglishListAdapter);
