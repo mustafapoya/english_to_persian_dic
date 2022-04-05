@@ -12,6 +12,12 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
+        android:id="@+id/navigation_persian"
+        android:name="net.golbarg.engtoper.ui.persian.PersianFragment"
+        android:label="@string/title_persian"
+        tools:layout="@layout/fragment_persian" />
+
+    <fragment
         android:id="@+id/navigation_bookmark"
         android:name="net.golbarg.engtoper.ui.bookmark.BookmarkFragment"
         android:label="@string/title_bookmark"

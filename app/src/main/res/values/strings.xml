@@ -13,4 +13,6 @@
     <string name="try_again">Try Again</string>
     <string name="word">Word</string>
     <string name="translate">translate</string>
+    <string name="title_english">English</string>
+    <string name="title_persian">Persian</string>
 </resources>
