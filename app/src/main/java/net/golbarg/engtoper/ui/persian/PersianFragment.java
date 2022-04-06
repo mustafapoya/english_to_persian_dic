@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -26,6 +27,7 @@ public class PersianFragment extends Fragment {
     Context context;
     ProgressBar progressLoading;
     AdView mAdViewHomeScreenBanner;
+    private SearchView searchView;
     private ListView listViewPhrase;
     PhrasePersianListAdapter phrasePersianListAdapter;
     ArrayList<PhrasePersian> phrasePersianArrayList = new ArrayList<>();
@@ -40,8 +42,21 @@ public class PersianFragment extends Fragment {
 
         progressLoading = root.findViewById(R.id.progress_loading);
         progressLoading.setVisibility(View.GONE);
+        searchView = root.findViewById(R.id.search_view_phrase);
         listViewPhrase = root.findViewById(R.id.list_view_phrase);
 
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                phrasePersianListAdapter.getFilter().filter(newText);
+                return true;
+            }
+        });
 
         phrasePersianListAdapter = new PhrasePersianListAdapter(getActivity(), phrasePersianArrayList);
         listViewPhrase.setAdapter(phrasePersianListAdapter);

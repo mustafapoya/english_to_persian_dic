@@ -46,7 +46,7 @@ public class PhraseEnglishListAdapter  extends ArrayAdapter<PhraseEnglish> imple
     @Nullable
     @Override
     public PhraseEnglish getItem(int position) {
-        return phraseEnglishArrayList.get(position);
+        return mDisplayedValues.get(position);
     }
 
     @Override

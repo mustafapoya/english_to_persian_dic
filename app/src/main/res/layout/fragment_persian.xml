@@ -43,6 +43,15 @@
             ads:layout_constraintStart_toStartOf="parent"
             ads:layout_constraintTop_toBottomOf="@id/progress_loading" />
 
+        <SearchView
+            android:id="@+id/search_view_phrase"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layoutDirection="rtl"
+            android:textDirection="rtl"
+            android:background="@drawable/custom_phrase_background"
+            ads:layout_constraintStart_toStartOf="parent"
+            ads:layout_constraintTop_toBottomOf="@+id/adViewScreenBanner" />
         <ListView
             android:id="@+id/list_view_phrase"
             android:layout_width="match_parent"
@@ -51,7 +60,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/adViewScreenBanner" />
+            app:layout_constraintTop_toBottomOf="@+id/search_view_phrase" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
