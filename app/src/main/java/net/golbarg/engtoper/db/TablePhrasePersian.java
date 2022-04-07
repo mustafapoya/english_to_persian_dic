@@ -4,7 +4,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import net.golbarg.engtoper.models.PhraseEnglish;
 import net.golbarg.engtoper.models.PhrasePersian;
 
 import java.io.UnsupportedEncodingException;
@@ -50,6 +49,21 @@ public class TablePhrasePersian {
             do {
                 result.add(mapColumn(cursor));
             }while(cursor.moveToNext());
+        }
+        return result;
+    }
+
+    public ArrayList<PhrasePersian> getBookmarks() {
+        ArrayList<PhrasePersian> result = new ArrayList<>();
+        String selectQuery = "SELECT  * FROM " + TABLE_NAME + " WHERE " + KEY_FAVORITE + " = 1";
+
+        SQLiteDatabase db = offlineDatabaseHandler.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if(cursor.moveToFirst()) {
+            do {
+                result.add(mapColumn(cursor));
+            } while(cursor.moveToNext());
         }
         return result;
     }
