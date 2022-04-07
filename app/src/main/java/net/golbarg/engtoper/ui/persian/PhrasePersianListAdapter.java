@@ -9,16 +9,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Filter;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import net.golbarg.engtoper.R;
-import net.golbarg.engtoper.db.TablePhraseEnglish;
 import net.golbarg.engtoper.db.TablePhrasePersian;
-import net.golbarg.engtoper.models.PhraseEnglish;
 import net.golbarg.engtoper.models.PhrasePersian;
 import net.golbarg.engtoper.ui.home.PhraseEnglishListAdapter;
 import net.golbarg.engtoper.util.UtilController;
