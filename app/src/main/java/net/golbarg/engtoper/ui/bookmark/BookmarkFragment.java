@@ -13,8 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import net.golbarg.engtoper.R;
-import net.golbarg.engtoper.db.TablePhrase;
-import net.golbarg.engtoper.models.Phrase;
+import net.golbarg.engtoper.db.TablePhraseEnglish;
+import net.golbarg.engtoper.models.PhraseEnglish;
 
 import java.util.ArrayList;
 
@@ -25,7 +25,7 @@ public class BookmarkFragment extends Fragment {
     ProgressBar progressLoading;
     private ListView listViewBookmark;
     BookmarkListAdapter bookmarkListAdapter;
-    ArrayList<Phrase> bookmarkArrayList = new ArrayList<>();
+    ArrayList<PhraseEnglish> bookmarkArrayList = new ArrayList<>();
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_bookmark, container, false);
@@ -44,7 +44,7 @@ public class BookmarkFragment extends Fragment {
         return root;
     }
 
-    private class FetchPhraseEnglishDataTask extends AsyncTask<String, String, ArrayList<Phrase>> {
+    private class FetchPhraseEnglishDataTask extends AsyncTask<String, String, ArrayList<PhraseEnglish>> {
         boolean successful = false;
 
         @Override
@@ -54,11 +54,11 @@ public class BookmarkFragment extends Fragment {
         }
 
         @Override
-        protected ArrayList<Phrase> doInBackground(String... params) {
-            ArrayList<Phrase> result = new ArrayList<>();
+        protected ArrayList<PhraseEnglish> doInBackground(String... params) {
+            ArrayList<PhraseEnglish> result = new ArrayList<>();
 
             try {
-                TablePhrase tablePhrase = new TablePhrase(context);
+                TablePhraseEnglish tablePhrase = new TablePhraseEnglish(context);
 
                 result = tablePhrase.getAll();
 
@@ -73,7 +73,7 @@ public class BookmarkFragment extends Fragment {
         }
 
         @Override
-        protected void onPostExecute(ArrayList<Phrase> result) {
+        protected void onPostExecute(ArrayList<PhraseEnglish> result) {
             super.onPostExecute(result);
             progressLoading.setVisibility(View.GONE);
 

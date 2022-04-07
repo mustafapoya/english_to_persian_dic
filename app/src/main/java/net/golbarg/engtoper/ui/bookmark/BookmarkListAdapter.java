@@ -13,25 +13,25 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import net.golbarg.engtoper.R;
-import net.golbarg.engtoper.db.TablePhrase;
-import net.golbarg.engtoper.models.Phrase;
+import net.golbarg.engtoper.db.TablePhraseEnglish;
+import net.golbarg.engtoper.models.PhraseEnglish;
 import net.golbarg.engtoper.ui.home.PhraseEnglishListAdapter;
 import net.golbarg.engtoper.util.UtilController;
 
 import java.util.ArrayList;
 
-public class BookmarkListAdapter extends ArrayAdapter<Phrase> {
+public class BookmarkListAdapter extends ArrayAdapter<PhraseEnglish> {
     public static final String TAG = PhraseEnglishListAdapter.class.getName();
 
     private final Activity context;
-    private ArrayList<Phrase> phraseArrayList;
-    TablePhrase tablePhrase;
+    private ArrayList<PhraseEnglish> phraseArrayList;
+    TablePhraseEnglish tablePhraseEnglish;
 
-    public BookmarkListAdapter(Activity context, ArrayList<Phrase> phraseArrayList) {
+    public BookmarkListAdapter(Activity context, ArrayList<PhraseEnglish> phraseArrayList) {
         super(context, R.layout.custom_list_phrase_english, phraseArrayList);
         this.context = context;
         this.phraseArrayList = phraseArrayList;
-        this.tablePhrase = new TablePhrase(context);
+        this.tablePhraseEnglish = new TablePhraseEnglish(context);
     }
 
     @NonNull
@@ -68,7 +68,7 @@ public class BookmarkListAdapter extends ArrayAdapter<Phrase> {
                         ImageButton btnBookmark = (ImageButton) v;
                         btnBookmark.setImageDrawable(context.getDrawable(R.drawable.ic_bookmark_yes));
                     }
-                    tablePhrase.updateFavorite(phraseArrayList.get(position));
+                    tablePhraseEnglish.updateFavorite(phraseArrayList.get(position));
                     phraseArrayList.remove(position);
                     notifyDataSetChanged();
                 } catch (Exception e) {
@@ -76,7 +76,6 @@ public class BookmarkListAdapter extends ArrayAdapter<Phrase> {
                 }
             }
         });
-
 
         return rowView;
     }
