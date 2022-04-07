@@ -44,7 +44,10 @@ public class PersianFragment extends Fragment {
         progressLoading.setVisibility(View.GONE);
         searchView = root.findViewById(R.id.search_view_phrase);
         listViewPhrase = root.findViewById(R.id.list_view_phrase);
-
+        //change close button direction
+        View xIcon = ((ViewGroup) searchView.getChildAt(0)).getChildAt(2);
+        xIcon.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+        //
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
