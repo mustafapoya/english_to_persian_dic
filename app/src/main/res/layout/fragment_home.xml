@@ -43,7 +43,7 @@
             android:id="@+id/search_view_phrase"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/custom_phrase_background"
+            android:background="@drawable/searchview_background"
             ads:layout_constraintStart_toStartOf="parent"
             ads:layout_constraintTop_toBottomOf="@+id/adViewScreenBanner" />
         <ListView
