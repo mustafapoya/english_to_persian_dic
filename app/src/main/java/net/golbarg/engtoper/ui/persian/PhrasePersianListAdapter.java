@@ -7,13 +7,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Filter;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import net.golbarg.engtoper.R;
+import net.golbarg.engtoper.db.TablePhraseEnglish;
+import net.golbarg.engtoper.db.TablePhrasePersian;
 import net.golbarg.engtoper.models.PhraseEnglish;
 import net.golbarg.engtoper.models.PhrasePersian;
 import net.golbarg.engtoper.ui.home.PhraseEnglishListAdapter;
@@ -28,14 +32,14 @@ public class PhrasePersianListAdapter extends ArrayAdapter<PhrasePersian> {
     private ArrayList<PhrasePersian> phrasePersianArrayList;
     private ArrayList<PhrasePersian> mDisplayedValues;
     LayoutInflater inflater;
-
+    TablePhrasePersian tablePhrasePersian;
     public PhrasePersianListAdapter(Activity context, ArrayList<PhrasePersian> phrasePersianArrayList) {
         super(context, R.layout.custom_list_phrase_persian, phrasePersianArrayList);
         this.context = context;
         this.phrasePersianArrayList = phrasePersianArrayList;
         this.mDisplayedValues = phrasePersianArrayList;
         this.inflater = LayoutInflater.from(context);
-
+        this.tablePhrasePersian = new TablePhrasePersian(context);
     }
 
     @Override
@@ -57,6 +61,7 @@ public class PhrasePersianListAdapter extends ArrayAdapter<PhrasePersian> {
     private class ViewHolder {
         ConstraintLayout constraintLayoutContainer;
         TextView txtWord, txtTranslate;
+        ImageButton btnBookmark;
     }
 
     @NonNull
@@ -71,15 +76,43 @@ public class PhrasePersianListAdapter extends ArrayAdapter<PhrasePersian> {
             holder.constraintLayoutContainer = convertView.findViewById(R.id.layout_container);
             holder.txtWord = convertView.findViewById(R.id.txt_word);
             holder.txtTranslate = convertView.findViewById(R.id.txt_translate);
+            holder.btnBookmark = convertView.findViewById(R.id.btn_bookmark);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
 
-
         holder.txtWord.setText(String.valueOf(mDisplayedValues.get(position).getFromLanguage()));
         String trans = UtilController.removeHTMLTags(mDisplayedValues.get(position).getToLanguage());
         holder.txtTranslate.setText(Html.fromHtml(trans));
+
+        if(mDisplayedValues.get(position).getFavorite() == 1) {
+            holder.btnBookmark.setImageDrawable(context.getDrawable(R.drawable.ic_bookmark_yes));
+        } else {
+            holder.btnBookmark.setImageDrawable(context.getDrawable(R.drawable.ic_bookmark_no));
+        }
+
+        holder.btnBookmark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    if(mDisplayedValues.get(position).getFavorite() == 1) {
+                        mDisplayedValues.get(position).setFavorite(0);
+                        ImageButton btnBookmark = (ImageButton) v;
+                        btnBookmark.setImageDrawable(context.getDrawable(R.drawable.ic_bookmark_no));
+                    } else {
+                        mDisplayedValues.get(position).setFavorite(1);
+                        ImageButton btnBookmark = (ImageButton) v;
+                        btnBookmark.setImageDrawable(context.getDrawable(R.drawable.ic_bookmark_yes));
+                    }
+                    tablePhrasePersian.updateFavorite(mDisplayedValues.get(position));
+//                    Toast.makeText(context, "word with id: " + mDisplayedValues.get(position).getId() + " updated", Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
         return convertView;
     }
 
