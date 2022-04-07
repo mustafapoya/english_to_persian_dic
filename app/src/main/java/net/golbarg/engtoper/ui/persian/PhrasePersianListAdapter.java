@@ -17,6 +17,7 @@ import net.golbarg.engtoper.R;
 import net.golbarg.engtoper.models.PhraseEnglish;
 import net.golbarg.engtoper.models.PhrasePersian;
 import net.golbarg.engtoper.ui.home.PhraseEnglishListAdapter;
+import net.golbarg.engtoper.util.UtilController;
 
 import java.util.ArrayList;
 
@@ -77,8 +78,8 @@ public class PhrasePersianListAdapter extends ArrayAdapter<PhrasePersian> {
 
 
         holder.txtWord.setText(String.valueOf(mDisplayedValues.get(position).getFromLanguage()));
-        holder.txtTranslate.setText(Html.fromHtml(mDisplayedValues.get(position).getToLanguage().replace("');", "")));
-
+        String trans = UtilController.removeHTMLTags(mDisplayedValues.get(position).getToLanguage());
+        holder.txtTranslate.setText(Html.fromHtml(trans));
         return convertView;
     }
 

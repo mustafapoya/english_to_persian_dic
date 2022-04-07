@@ -18,6 +18,7 @@ import androidx.fragment.app.FragmentManager;
 
 import net.golbarg.engtoper.R;
 import net.golbarg.engtoper.models.PhraseEnglish;
+import net.golbarg.engtoper.util.UtilController;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -77,7 +78,8 @@ public class PhraseEnglishListAdapter  extends ArrayAdapter<PhraseEnglish> imple
         }
 
         holder.txtWord.setText(String.valueOf(mDisplayedValues.get(position).getFromLanguage()));
-        holder.txtTranslate.setText(Html.fromHtml(mDisplayedValues.get(position).getToLanguage().replace("');", "")));
+        String trans = UtilController.removeHTMLTags(mDisplayedValues.get(position).getToLanguage());
+        holder.txtTranslate.setText(Html.fromHtml(trans));
 
         return convertView;
     }
