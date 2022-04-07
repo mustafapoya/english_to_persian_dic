@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import net.golbarg.engtoper.models.PhraseEnglish;
+import net.golbarg.engtoper.models.PhrasePersian;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -41,6 +42,21 @@ public class TablePhraseEnglish {
     public ArrayList<PhraseEnglish> getAll() {
         ArrayList<PhraseEnglish> result = new ArrayList<>();
         String selectQuery = "SELECT  * FROM " + TABLE_NAME;
+
+        SQLiteDatabase db = offlineDatabaseHandler.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if(cursor.moveToFirst()) {
+            do {
+                result.add(mapColumn(cursor));
+            } while(cursor.moveToNext());
+        }
+        return result;
+    }
+
+    public ArrayList<PhraseEnglish> getBookmarks() {
+        ArrayList<PhraseEnglish> result = new ArrayList<>();
+        String selectQuery = "SELECT  * FROM " + TABLE_NAME + " WHERE " + KEY_FAVORITE + " = 1";
 
         SQLiteDatabase db = offlineDatabaseHandler.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);

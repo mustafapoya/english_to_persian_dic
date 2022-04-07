@@ -12,6 +12,9 @@ import android.widget.ProgressBar;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import net.golbarg.engtoper.R;
 import net.golbarg.engtoper.db.TablePhraseEnglish;
 import net.golbarg.engtoper.models.PhraseEnglish;
@@ -22,6 +25,7 @@ import java.util.ArrayList;
 public class BookmarkFragment extends Fragment {
 
     Context context;
+    AdView mAdViewHomeScreenBanner;
     ProgressBar progressLoading;
     private ListView listViewBookmark;
     BookmarkListAdapter bookmarkListAdapter;
@@ -30,6 +34,10 @@ public class BookmarkFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_bookmark, container, false);
         context = root.getContext();
+
+        mAdViewHomeScreenBanner = root.findViewById(R.id.adViewBookmarkScreenBanner);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdViewHomeScreenBanner.loadAd(adRequest);
 
         progressLoading = root.findViewById(R.id.progress_loading);
         progressLoading.setVisibility(View.GONE);
@@ -60,7 +68,7 @@ public class BookmarkFragment extends Fragment {
             try {
                 TablePhraseEnglish tablePhrase = new TablePhraseEnglish(context);
 
-                result = tablePhrase.getAll();
+                result = tablePhrase.getBookmarks();
 
                 successful = true;
                 return result;
