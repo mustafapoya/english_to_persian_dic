@@ -54,7 +54,7 @@ public class TablePhraseEnglish {
     }
 
     public void updateFavorite(PhraseEnglish phrase) {
-        String query = "update " + TABLE_NAME + " SET " + KEY_FAVORITE + " = " + phrase.getFavorite() + " WHERE id = " + phrase.getId();
+        String query = String.format("UPDATE %s SET %s = %s WHERE %s = %s;", TABLE_NAME, KEY_FAVORITE, phrase.getFavorite(), KEY_ID, phrase.getId());
         SQLiteDatabase db = offlineDatabaseHandler.getReadableDatabase();
         db.execSQL(query);
     }
