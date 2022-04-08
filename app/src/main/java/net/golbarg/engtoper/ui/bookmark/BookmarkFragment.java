@@ -29,15 +29,15 @@ import java.util.ArrayList;
 public class BookmarkFragment extends Fragment {
 
     Context context;
-    AdView mAdViewHomeScreenBanner;
+    AdView mAdViewScreenBanner;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_bookmark, container, false);
         context = root.getContext();
 
-        mAdViewHomeScreenBanner = root.findViewById(R.id.adViewBookmarkScreenBanner);
+        mAdViewScreenBanner = root.findViewById(R.id.adViewScreenBanner);
         AdRequest adRequest = new AdRequest.Builder().build();
-        mAdViewHomeScreenBanner.loadAd(adRequest);
+        mAdViewScreenBanner.loadAd(adRequest);
 
         TabLayout tabLayout = root.findViewById(R.id.tab_layout_bookmark);
         TabItem tabEnglish  = root.findViewById(R.id.tab_english);

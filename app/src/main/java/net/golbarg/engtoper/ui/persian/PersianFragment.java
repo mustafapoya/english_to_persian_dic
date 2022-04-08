@@ -26,7 +26,7 @@ import java.util.ArrayList;
 public class PersianFragment extends Fragment {
     Context context;
     ProgressBar progressLoading;
-    AdView mAdViewHomeScreenBanner;
+    AdView mAdViewScreenBanner;
     private SearchView searchView;
     private ListView listViewPhrase;
     PhrasePersianListAdapter phrasePersianListAdapter;
@@ -36,9 +36,9 @@ public class PersianFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_persian, container, false);
         context = root.getContext();
 
-        mAdViewHomeScreenBanner = root.findViewById(R.id.adViewScreenBanner);
+        mAdViewScreenBanner = root.findViewById(R.id.adViewScreenBanner);
         AdRequest adRequest = new AdRequest.Builder().build();
-        mAdViewHomeScreenBanner.loadAd(adRequest);
+        mAdViewScreenBanner.loadAd(adRequest);
 
         progressLoading = root.findViewById(R.id.progress_loading);
         progressLoading.setVisibility(View.GONE);

@@ -30,7 +30,7 @@ public class HomeFragment extends Fragment {
 
     Context context;
     ProgressBar progressLoading;
-    AdView mAdViewHomeScreenBanner;
+    AdView mAdViewScreenBanner;
     SearchView searchView;
     private ListView listViewPhrase;
     PhraseEnglishListAdapter phraseEnglishListAdapter;
@@ -41,9 +41,9 @@ public class HomeFragment extends Fragment {
         setHasOptionsMenu(true);
         context = root.getContext();
 
-        mAdViewHomeScreenBanner = root.findViewById(R.id.adViewScreenBanner);
+        mAdViewScreenBanner = root.findViewById(R.id.adViewScreenBanner);
         AdRequest adRequest = new AdRequest.Builder().build();
-        mAdViewHomeScreenBanner.loadAd(adRequest);
+        mAdViewScreenBanner.loadAd(adRequest);
 
         progressLoading = root.findViewById(R.id.progress_loading);
         progressLoading.setVisibility(View.GONE);

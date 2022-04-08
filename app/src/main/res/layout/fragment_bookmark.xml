@@ -12,7 +12,7 @@
     <!-- real_id="ca-app-pub-1361000594268534/8993236302" -->
     <!-- test_id="ca-app-pub-3940256099942544/6300978111" -->
     <com.google.android.gms.ads.AdView
-        android:id="@+id/adViewBookmarkScreenBanner"
+        android:id="@+id/adViewScreenBanner"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -30,7 +30,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:tabInlineLabel="true"
-        app:layout_constraintTop_toBottomOf="@+id/adViewBookmarkScreenBanner">
+        app:layout_constraintTop_toBottomOf="@+id/adViewScreenBanner">
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tab_english"
