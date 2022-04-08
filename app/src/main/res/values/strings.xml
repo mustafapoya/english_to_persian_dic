@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">English Dictionary</string>
-    <string name="app_desc">Application Description</string>
+    <string name="app_desc">
+        This application will help you to translate from english to persian and vice-versa. you can bookmark word to review later
+    </string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
