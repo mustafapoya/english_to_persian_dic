@@ -8,18 +8,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.bookmark.BookmarkFragment">
 
-    <ProgressBar
-        android:id="@+id/progress_loading"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:indeterminate="true"
-        android:visibility="visible"
-        android:scaleY="3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <!-- TODO: on publish add real ad unit -->
     <!-- real_id="ca-app-pub-1361000594268534/8993236302" -->
     <!-- test_id="ca-app-pub-3940256099942544/6300978111" -->
@@ -33,16 +21,39 @@
         ads:adUnitId="ca-app-pub-1361000594268534/8993236302"
         ads:layout_constraintEnd_toEndOf="parent"
         ads:layout_constraintStart_toStartOf="parent"
-        ads:layout_constraintTop_toBottomOf="@id/progress_loading" />
+        ads:layout_constraintTop_toTopOf="parent" />
 
-    <ListView
-        android:id="@+id/list_view_bookmark"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout_bookmark"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:tabInlineLabel="true"
+        app:layout_constraintTop_toBottomOf="@+id/adViewBookmarkScreenBanner">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab_english"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_english"
+            android:icon="@drawable/english"
+            />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab_persian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/persian"
+            android:text="@string/title_persian" />
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager_container"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="3.0sp"
-        ads:layout_constraintBottom_toBottomOf="parent"
-        ads:layout_constraintEnd_toEndOf="parent"
-        ads:layout_constraintStart_toStartOf="parent"
-        ads:layout_constraintTop_toBottomOf="@+id/adViewBookmarkScreenBanner" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tab_layout_bookmark" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,9 +11,13 @@ import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.material.tabs.TabItem;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 import net.golbarg.engtoper.R;
 import net.golbarg.engtoper.db.TablePhraseEnglish;
@@ -26,10 +30,6 @@ public class BookmarkFragment extends Fragment {
 
     Context context;
     AdView mAdViewHomeScreenBanner;
-    ProgressBar progressLoading;
-    private ListView listViewBookmark;
-    BookmarkListAdapter bookmarkListAdapter;
-    ArrayList<PhraseEnglish> bookmarkArrayList = new ArrayList<>();
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_bookmark, container, false);
@@ -39,55 +39,39 @@ public class BookmarkFragment extends Fragment {
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdViewHomeScreenBanner.loadAd(adRequest);
 
-        progressLoading = root.findViewById(R.id.progress_loading);
-        progressLoading.setVisibility(View.GONE);
+        TabLayout tabLayout = root.findViewById(R.id.tab_layout_bookmark);
+        TabItem tabEnglish  = root.findViewById(R.id.tab_english);
+        TabItem tabPersian  = root.findViewById(R.id.tab_persian);
 
-        listViewBookmark = root.findViewById(R.id.list_view_bookmark);
+        ViewPager2 viewPager = root.findViewById(R.id.view_pager_container);
 
-        bookmarkListAdapter = new BookmarkListAdapter(getActivity(), bookmarkArrayList);
-        listViewBookmark.setAdapter(bookmarkListAdapter);
+        BookmarkPagerAdapter pagerAdapter = new BookmarkPagerAdapter(getActivity(), tabLayout.getTabCount());
+        viewPager.setAdapter(pagerAdapter);
+        viewPager.setUserInputEnabled(false);
 
-        new FetchPhraseEnglishDataTask().execute();
+        TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(
+                tabLayout, viewPager, new TabLayoutMediator.TabConfigurationStrategy() {
+            @Override
+            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                switch (position) {
+                    case 0:
+                        tab.setText(R.string.title_english);
+                        tab.setIcon(R.drawable.english);
+                        break;
+                    case 1:
+                        tab.setText(R.string.title_persian);
+                        tab.setIcon(R.drawable.persian);
+                        break;
+                }
+            }
+        }
+        );
+        tabLayoutMediator.attach();
+
+
 
         return root;
     }
 
-    private class FetchPhraseEnglishDataTask extends AsyncTask<String, String, ArrayList<PhraseEnglish>> {
-        boolean successful = false;
 
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            progressLoading.setVisibility(View.VISIBLE);
-        }
-
-        @Override
-        protected ArrayList<PhraseEnglish> doInBackground(String... params) {
-            ArrayList<PhraseEnglish> result = new ArrayList<>();
-
-            try {
-                TablePhraseEnglish tablePhrase = new TablePhraseEnglish(context);
-
-                result = tablePhrase.getBookmarks();
-
-                successful = true;
-                return result;
-            }catch(Exception e) {
-                successful = false;
-                e.printStackTrace();
-            }
-            successful = false;
-            return result;
-        }
-
-        @Override
-        protected void onPostExecute(ArrayList<PhraseEnglish> result) {
-            super.onPostExecute(result);
-            progressLoading.setVisibility(View.GONE);
-
-            bookmarkArrayList.clear();
-            bookmarkArrayList.addAll(result);
-            bookmarkListAdapter.notifyDataSetChanged();
-        }
-    }
 }
