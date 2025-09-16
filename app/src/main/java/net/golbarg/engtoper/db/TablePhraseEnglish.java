@@ -1,11 +1,11 @@
 package net.golbarg.engtoper.db;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import net.golbarg.engtoper.models.PhraseEnglish;
-import net.golbarg.engtoper.models.PhrasePersian;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -75,6 +75,7 @@ public class TablePhraseEnglish {
         db.execSQL(query);
     }
 
+    @SuppressLint("Range")
     public PhraseEnglish mapColumn(Cursor cursor) {
         String language_to = "";
         try {

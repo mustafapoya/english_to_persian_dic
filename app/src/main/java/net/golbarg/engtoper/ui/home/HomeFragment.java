@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.SearchView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -18,8 +17,6 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
 import net.golbarg.engtoper.R;
-import net.golbarg.engtoper.db.DatabaseHandler;
-import net.golbarg.engtoper.db.TableConfig;
 import net.golbarg.engtoper.db.TablePhraseEnglish;
 import net.golbarg.engtoper.models.PhraseEnglish;
 

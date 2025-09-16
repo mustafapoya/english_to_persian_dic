@@ -1,5 +1,6 @@
 package net.golbarg.engtoper.db;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -108,6 +109,7 @@ public class TableBookmark implements CRUDHandler<Bookmark>{
         return count;
     }
 
+    @SuppressLint("Range")
     @Override
     public Bookmark mapColumn(Cursor cursor) {
         return new Bookmark(

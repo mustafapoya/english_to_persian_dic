@@ -19,7 +19,6 @@ import com.google.android.gms.ads.AdView;
 import net.golbarg.engtoper.R;
 import net.golbarg.engtoper.db.TablePhrasePersian;
 import net.golbarg.engtoper.models.PhrasePersian;
-import net.golbarg.engtoper.ui.home.HomeFragment;
 
 import java.util.ArrayList;
 

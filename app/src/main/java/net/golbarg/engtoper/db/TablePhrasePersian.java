@@ -1,5 +1,6 @@
 package net.golbarg.engtoper.db;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -74,6 +75,7 @@ public class TablePhrasePersian {
         db.execSQL(query);
     }
 
+    @SuppressLint("Range")
     public PhrasePersian mapColumn(Cursor cursor) {
         String language_to = "";
         try {

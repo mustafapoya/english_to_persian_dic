@@ -12,12 +12,8 @@ import android.widget.ProgressBar;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.google.android.gms.ads.AdView;
-
 import net.golbarg.engtoper.R;
-import net.golbarg.engtoper.db.TablePhraseEnglish;
 import net.golbarg.engtoper.db.TablePhrasePersian;
-import net.golbarg.engtoper.models.PhraseEnglish;
 import net.golbarg.engtoper.models.PhrasePersian;
 import net.golbarg.engtoper.ui.persian.PhrasePersianListAdapter;
 

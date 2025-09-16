@@ -1,13 +1,10 @@
 package net.golbarg.engtoper.ui.bookmark;
 
 import android.content.Context;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
-import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -20,10 +17,6 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 import net.golbarg.engtoper.R;
-import net.golbarg.engtoper.db.TablePhraseEnglish;
-import net.golbarg.engtoper.models.PhraseEnglish;
-
-import java.util.ArrayList;
 
 
 public class BookmarkFragment extends Fragment {

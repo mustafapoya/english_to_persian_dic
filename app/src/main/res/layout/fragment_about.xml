@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -57,6 +59,20 @@
             app:layout_constraintTop_toBottomOf="@+id/txt_app_name" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- TODO: on publish add real ad unit -->
+    <!-- real_id="ca-app-pub-8976959600358837/4913413034" -->
+    <!-- test_id="ca-app-pub-3940256099942544/6300978111" -->
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adViewScreenBanner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-8976959600358837/4913413034"
+        ads:layout_constraintEnd_toEndOf="parent"
+        ads:layout_constraintStart_toStartOf="parent"
+        ads:layout_constraintTop_toBottomOf="@+id/layout_top_container" />
 
     <ScrollView
         android:id="@+id/scroll_view_content"
@@ -66,7 +82,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_top_container"
+        app:layout_constraintTop_toBottomOf="@+id/adViewScreenBanner"
         app:layout_constraintVertical_bias="1.0"
         tools:ignore="SpeakableTextPresentCheck">
 
