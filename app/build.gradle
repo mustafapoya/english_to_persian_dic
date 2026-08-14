@@ -4,14 +4,14 @@ plugins {
 
 android {
     namespace 'net.golbarg.engtoper'
-    compileSdk 35
+    compileSdk 36
 
     defaultConfig {
         applicationId "net.golbarg.engtoper"
         minSdk 28
-        targetSdk 35
-        versionCode 5
-        versionName "1.5"
+        targetSdk 36
+        versionCode 6
+        versionName "1.6"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         setProperty("archivesBaseName", "eng-to-per-$versionName")
